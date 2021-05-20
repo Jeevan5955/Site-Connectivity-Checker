@@ -11,6 +11,9 @@ Instead of manually visiting a URL, a Site Connectivity Checker can do all of th
 for you. This way, you’ll only get the results of the check without having to spend time on the
 browser, waiting for the site to go live.
 
+##### Backend Framework : Django
+##### Languages : HTML,CSS, Javascript, Python
+##### Database: SQLite
 
 ### How to run :
 
