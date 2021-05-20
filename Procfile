@@ -1,0 +1,1 @@
+web: gunicorn saarthi_ai.wsgi --log-file -

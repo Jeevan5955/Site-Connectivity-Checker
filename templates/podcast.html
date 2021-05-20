@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Podcast</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    <noscript
+      ><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <a href="{% url 'song' %}" class="logo">Introduction</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="{% url 'song' %}">Song</a></li>
+          <li class="active"><a href="{% url 'podcast' %}">Podcast</a></li>
+          <li><a href="{% url 'audiobook' %}">Audio-Book</a></li>
+        </ul>
+        <ul class="icons">
+          <li>
+            <a href="https://www.linkedin.com/in/jeevan-n-698600184/" class="icon brands fa-linkedin"
+              ><span class="label">Instagram</span></a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/Jeevan5955" class="icon brands fa-github"
+              ><span class="label">GitHub</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <!-- Table -->
+        <h2>Podcast List</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Uploaded Time</th>
+                <th>Host</th>
+                <th>Participants</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in podcast_list %}
+              <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.Name}}</td>
+                <td>{{i.Duration}}</td>
+                <td>{{i.Uploaded_time}}</td>
+                <td>{{i.Host}}</td>
+                <td>{{i.Participants}}</td>
+                <td><button class="button"><a href="{% url 'podcastupdateform' i.id %}"><span>Update </span></button></a></td>
+                <td><button class="button"><a href="{% url 'podcastdeleteform' i.id %}"><span>Delete </span></button></a></td>
+              </tr>
+              {% endfor %}
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section>
+          <h2>Add Podcast</h2>
+          <form method="post" action="">
+            <div class="fields">
+              <div class="field">
+                {% csrf_token %} {{form.as_p}}
+              </div>
+            </div>
+            <ul class="actions">
+              <li><input type="submit" value="Submit" /></li>
+            </ul>
+          </form>
+        </section>
+      </footer>
+
+
+    <!-- Scripts -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static 'assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/util.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>

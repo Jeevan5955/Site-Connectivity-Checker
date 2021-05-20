@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Site Connectivity Checker </title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    <noscript
+      ><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}"
+    /></noscript>
+    <!-- <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" /> -->
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+      <!-- Intro -->
+      <div id="intro">
+        <h1>
+          This is<br />
+          Site Connectivity Checker
+        </h1>
+        <p>
+			This Django App checks is a Site Connectivity Checker that
+      visits a URL and returns the status of the URL. It is either live or not. <br/>
+
+			Backend Framework: Django <br/>
+			Frontend: HTML,CSS,Javascript<br/>
+			Database: SQLite<br/>
+			<a href="https://github.com/Jeevan5955/Site-Connectivity-Checker">GitHub Repo</a>
+        </p>
+        <ul class="actions">
+          <li>
+            <a
+              href="#header"
+              class="button icon solid solo fa-arrow-down scrolly"
+              >Continue</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Header -->
+      <header id="header">
+        <a href="" class="logo">Introduction</a>
+      </header>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li class="active"><a href="">Single URL Check</a></li>
+          <li><a href="{% url 'multiple' %}">Multiple URL Check</a></li>
+        </ul>
+        <ul class="icons">
+          <li>
+            <a href="https://www.linkedin.com/in/jeevan-n-698600184/" class="icon brands fa-linkedin"
+              ><span class="label">Instagram</span></a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/Jeevan5955" class="icon brands fa-github"
+              ><span class="label">GitHub</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+
+        <section>
+          <h2>Enter the URL</h2>
+          <form method="post" action="/status/">
+            <div class="fields">
+              <div class="field">
+                {% csrf_token %} 
+                <input
+                type="name"
+                name="url"
+                id="url"
+                class="form-control"
+                placeholder="Enter URL..."
+                required
+                autofocus
+              />
+            </div>
+            </div>
+            <ul class="actions">
+              <li><input type="submit" value="Submit" /></li>
+            </ul>
+          </form>
+          <div class="field">
+            {% if message == "OK"  %}
+            {{url}}: {{message}}<br>
+            <img src="{% static 'tick.png' %}" />
+            {% elif count == 1 %}
+            {{url}}: {{message}}<br>
+            <img src="{% static 'cross.png' %}" />
+            {% elif message == "Invalid URL" %}
+            {{url}}: {{message}}<br>
+            <img src="{% static 'cross.png' %}" />
+            {% endif %}
+            
+          </div>
+        </section>
+
+        <!-- <form method="post" action="/status/">
+          <div class="fields">
+            {% csrf_token %}
+          <input
+            type="name"
+            name="url"
+            id="url"
+            class="form-control"
+            placeholder="Enter URL..."
+            required
+            autofocus
+          />
+          </div>
+          <ul class="actions">
+            <li><input type="submit" value="Submit" /></li>
+          </ul>
+        </form> -->
+
+        
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+      </footer>
+
+    
+
+    <!-- Scripts -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+    <script src="{% static 'assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/util.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>
